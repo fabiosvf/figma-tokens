@@ -19,7 +19,7 @@ jobs:
         uses: jsdaniell/create-json@1.1.2
         with:
           name: ${{ github.event.client_payload.filename }}
-          json: ${{ github.event.client_payload.tokens }}
+          json: ${{ toJson(fromJson(github.event.client_payload.tokens)) }}
           dir: "input"
 
       - name: Install Node.js
